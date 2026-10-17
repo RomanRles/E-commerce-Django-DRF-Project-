@@ -1,0 +1,86 @@
+POST http://localhost:8000/products/ HTTP/1.1
+Content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgzOTYyNTI3LCJpYXQiOjE3ODM5NjIyMjcsImp0aSI6IjdkOTE5N2FlMzM0ZDQzMzhhOWViMDU1ZWVkMjNiN2Q0IiwidXNlcl9pZCI6IjIifQ.CYeM26tZNSycNM9yY7074MycwBGeux3yGk0pye4unbo
+
+{
+    "title": "Television",
+    "price": 300.00,
+    "stock": 14,
+    "description": "This is a whole new way of entertainment",
+    "sku": "176-123-456"
+}
+
+###
+POST http://localhost:8000/api/token/ HTTP/1.1
+Content-type: application/json
+
+{
+    "username": "roman",
+    "password": "test"
+}
+
+###
+POST http://localhost:8000/api/token/ HTTP/1.1
+Content-type: application/json
+
+{
+    "username": "roman",
+    "password": "test"
+}
+
+###
+GET http://localhost:8000/orders/?status=pending HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg2ODUyNjUzLCJpYXQiOjE3ODY4NTIzNTMsImp0aSI6ImYwYmZhYjdhZDVjNDRkZjc4Y2NjNjM4MTMyZmI1NzY1IiwidXNlcl9pZCI6IjIifQ.a27iBv3pwrACBemRjNq9lBg9Lka-k1ufv1QSR5HFVjc
+
+###
+GET http://localhost:8000/orders/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg2ODU0NzE2LCJpYXQiOjE3ODY4NTQ0MTYsImp0aSI6ImE0NzgxM2RhMTc0MzQxMDc5Mzk1ZjIwZDE4MTdiNDc2IiwidXNlcl9pZCI6IjIifQ.n4jqaSzIosoj0ZkomyrnAfLzrmdo9mGdp_5HDL_iFbQ
+
+### 
+GET http://localhost:8000/orders/1/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg3MTQ4Mzg2LCJpYXQiOjE3ODcxNDgwODYsImp0aSI6ImUyNGY4ODkyZmU0YTQ1MTc5YzY3MTFjYWU0NzJlMDdjIiwidXNlcl9pZCI6IjIifQ.Ed07_ouiMu9ltPG4GTOGoNSogZ_vAVi7aJ6xmcCsb0E
+
+###
+PATCH http://localhost:8000/orders/8/items/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg3MTQ4NzQ0LCJpYXQiOjE3ODcxNDg0NDQsImp0aSI6IjVkMDcxNjRmNDU3OTQxNzU4MmE5Zjk5ZTA0NjM3YWQ2IiwidXNlcl9pZCI6IjIifQ.BS4scFmQAVoTkCfbLbm5b2W3SvjUOa_e0at6hcBh7EY
+
+{
+    "product_id": 1,
+    "quantity": 4
+}
+
+###
+GET http://localhost:8000/orders/8/items/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg3MDY5NTA1LCJpYXQiOjE3ODcwNjkyMDUsImp0aSI6IjM1OWQwNTU0NjcwODQ5YWI4Y2I3Yjk5NzQ0NGQ1MDQ2IiwidXNlcl9pZCI6IjIifQ.WSRqcU-BlQRkFIbS2mRzgqwpnO1iAV8gDKwgIE5FTfo
+
+
+###
+POST http://localhost:8000/register/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "chelo",
+    "email": "roman@example.com",
+    "password": "secret123",
+    "password2": "secret123"
+}
+
+### 
+GET http://localhost:8000/products/ HTTP/1.1
+Content-Type: application/json
+
+### 
+POST http://localhost:8000/products/1/comments/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg2ODEyNzQ4LCJpYXQiOjE3ODY4MTI0NDgsImp0aSI6IjFmM2I3YmUzMTg3YTQ4NDRhMzcyYzkyZWZiODI3YTQ3IiwidXNlcl9pZCI6IjIifQ.v86Hg5_lLe5jOZGqClzK97rDxF8nk4wM4Oi6OCiuPmM
+
+{
+    "comment": "What a great product. 5 stars Rate",
+    "id": 2,
+    "product": 1
+}

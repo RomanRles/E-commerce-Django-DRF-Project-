@@ -2,6 +2,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+from decimal import Decimal
+
 
 class User(AbstractUser):
     pass
@@ -45,7 +47,16 @@ class ImageProduct(models.Model):
 
     def __str__(self):
         return f"Image for {self.product.title}"
-    
+
+
+class Comments(models.Model):
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE,
+        related_name='comments'
+    )
+    comment = models.TextField()
+
 
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -61,11 +72,21 @@ class Order(models.Model):
         ],
         default='pending'
     )
-    total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    products = models.ManyToManyField(Product, through='OrderItem', related_name='orders')
 
+    @property
+    def total_price(self):
+        return sum(
+            (item.item_subtotal
+            for item in self.items.all()),
+            Decimal('0.00')
+        )
 
 class OrderItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.PROTECT)
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
-    subtotal = models.DecimalField(max_digits=10, decimal_places=2)
+
+    @property
+    def item_subtotal(self):
+        return self.product.price * self.quantity
